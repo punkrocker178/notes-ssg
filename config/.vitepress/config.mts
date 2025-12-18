@@ -2,7 +2,13 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  srcDir: "./markdown",
+  vite: {
+    server: {
+      port: 3000,
+      host: true
+    }
+  },
+  srcDir: "../markdown",
   
   title: "Steve's Portfolio",
   description: "A VitePress Site",
