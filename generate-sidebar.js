@@ -13,8 +13,8 @@ const IGNORE_PATTERNS = ['.obsidian', '.gitignore', 'img'];
 const CATEGORY_CONFIG = {
   'Angular': { name: 'Angular', collapsed: true },
   'React': { name: 'React', collapsed: true },
-  'Javascript': { name: 'JavaScript', collapsed: true },
-  'CSharp': { name: 'C#', collapsed: true },
+  'Javascript': { name: 'Javascript', collapsed: true },
+  'CSharp': { name: 'CSharp', collapsed: true },
   'Design patterns': { name: 'Design Patterns', collapsed: true },
   'Algo': { name: 'Algo', collapsed: true },
   'Docker': { name: 'Docker', collapsed: true },
@@ -79,7 +79,6 @@ function buildSidebarItems(dir, baseLink = '') {
   Object.entries(dir.dirs).forEach(([dirName, subDir]) => {
     const config = CATEGORY_CONFIG[dirName] || { name: dirName, collapsed: false };
     const subItems = [];
-
     // Add markdown files from subdirectory
     subDir.files.forEach(file => {
       const displayName = getDisplayName(file);
@@ -119,6 +118,7 @@ function buildSidebarItems(dir, baseLink = '') {
       });
     }
   });
+
 
   // Add root level markdown files
   dir.files.forEach(file => {
