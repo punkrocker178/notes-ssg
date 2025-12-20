@@ -6,6 +6,8 @@
   "scripts": {
     "docs:dev": "vitepress dev config",
     "docs:build": "vitepress build config",
-    "docs:preview": "vitepress preview config"
+    "docs:preview": "vitepress preview config",
+    "preprocess-markdown": "node preprocess-markdown-files.js",
+    "generate-sidebar": "node generate-sidebar.js"
   }
 }

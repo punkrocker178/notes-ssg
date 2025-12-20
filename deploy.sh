@@ -6,18 +6,14 @@ echo "Downloading https://github.com/punkrocker178/notes-vault"
 curl -L -o notes-vault.zip https://github.com/punkrocker178/notes-vault/archive/main.zip
 
 echo "Removing old files"
-rm -rf markdown/*
+rm -rf markdown/notes-vault-main
 
 echo "Unzipping notes-vault"
 unzip -d markdown/ notes-vault.zip
 rm notes-vault.zip
 
-echo "Moving markdown files to markdown/ directory"
-mv markdown/notes-vault-main/* markdown/
-rm -rf markdown/notes-vault-main
-
 echo "Preprocessing markdown files"
-docker run -it --rm -v $PWD:/app -w /app node:22-alpine node preprocess-markdown-files.js
+docker run -it --rm -v $PWD:/app -w /app node:22-alpine npm run preprocess-markdown
 
 echo "Building pages"
 # Check if npm contains vitepress to install
