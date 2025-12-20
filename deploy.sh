@@ -21,7 +21,7 @@ if ! docker run -it --rm -v $PWD:/app -w /app node:22-alpine sh -c "npm ls vitep
   echo "Installing vitepress"
   docker run -it --rm -v $PWD:/app -w /app node:22-alpine sh -c "npm install vitepress"
 fi
-docker run -it --rm -v $PWD:/app -w /app node:22-alpine sh -c "npm run docs:build"
+docker run -it --rm -v $PWD:/app -w /app node:22-alpine sh -c "npm run generate-sidebar && npm run docs:build"
 
 echo "Deploying to S3"
 aws s3 sync $CONFIG_DIR s3://$S3_BUCKET/ --delete
