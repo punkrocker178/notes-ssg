@@ -10,8 +10,8 @@ export default defineConfig({
   },
   srcDir: "../markdown",
   
-  title: "Steve's Portfolio",
-  description: "A VitePress Site",
+  title: "Steve's Notes",
+  description: "My collection of notes",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
