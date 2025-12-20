@@ -15,8 +15,9 @@ function scanFiles(dir) {
     } else if (file.endsWith('.md')) {
       const content = fs.readFileSync(filePath, 'utf-8');
       console.log(`Scanning: ${filePath}`);
-      escapeVueCurlyBraces(content, file);
-      escapeVueCodeBlocks(content, file);
+      let escapedContent = escapeVueCurlyBraces(content, file);
+      escapedContent = escapeVueCodeBlocks(escapedContent, file);
+      fs.writeFileSync(filePath, escapedContent, 'utf-8');
     }
   });
 }
@@ -26,18 +27,21 @@ function escapeVueCurlyBraces(content, fileName) {
   if (curlyBracketMatches?.length > 0) {
     const modifiedContent = content.replace(/`\{\{.+?\}\}`/g, '<span v-pre>$&</span>');
     console.log(`-> Curly brackets found at ${fileName}. Wrapping with v-pre`);
-    fs.writeFileSync(fileName, modifiedContent, 'utf-8');
-    console.log(`-> ${fileName} is cleaned ✓`);
+    console.log(`-> ${fileName} is wrapped ✓`);
+    return modifiedContent;
   }
+  return content;
 }
 
-function escapeVueCodeBlocks(content, filePath) {
+function escapeVueCodeBlocks(content, fileName) {
   let codeBlockMatches = content.match(/```vue[\s\S]*?```/g);
   if (codeBlockMatches?.length > 0) {
     const modifiedContent = content.replace(/```vue[\s\S]*?```/g, '````md\n$&\n````');
-    fs.writeFileSync(filePath, modifiedContent, 'utf-8');
-    console.log(`-> Wrapped Vue code block in ${filePath}`);
+    console.log(`-> Vue code block found at ${fileName}. Wrapping with markdown code block`);
+    console.log(`-> Wrapped Vue code block in ${fileName}`);
+    return modifiedContent;
   }
+  return content;
 }
 
 scanFiles(markdownDir);
