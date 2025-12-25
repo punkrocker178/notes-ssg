@@ -114,8 +114,22 @@ export default defineConfig({
         ]
       },
       {
-        "text": "VueJS",
-        "link": "/VueJS"
+        "text": "Vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Basic concepts",
+            "link": "/Vue/Basic concepts"
+          },
+          {
+            "text": "Comparision with other frameworks",
+            "link": "/Vue/Comparision with other frameworks"
+          },
+          {
+            "text": "Passing template content",
+            "link": "/Vue/Passing template content"
+          }
+        ]
       }
     ]
   },
@@ -147,8 +161,8 @@ export default defineConfig({
             "link": "/CSharp/Entity Framework"
           },
           {
-            "text": "dotnet",
-            "link": "/CSharp/dotnet"
+            "text": "Setup dotnet project",
+            "link": "/CSharp/Setup dotnet project"
           }
         ]
       },
@@ -180,8 +194,26 @@ export default defineConfig({
     "text": "Design & Architecture",
     "items": [
       {
-        "text": "Trunk based development",
-        "link": "/Trunk based development"
+        "text": "Design patterns",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Command Query Responsibility Segragation",
+            "link": "/Design patterns/Command Query Responsibility Segragation"
+          },
+          {
+            "text": "Dependency Injection",
+            "link": "/Design patterns/Dependency Injection"
+          },
+          {
+            "text": "Micro Frontend",
+            "link": "/Design patterns/Micro Frontend"
+          },
+          {
+            "text": "SOLID Principles",
+            "link": "/Design patterns/SOLID Principles"
+          }
+        ]
       }
     ]
   },
@@ -267,6 +299,10 @@ export default defineConfig({
       {
         "text": "Random Interview questions",
         "link": "/Random Interview questions"
+      },
+      {
+        "text": "Trunk based development",
+        "link": "/Trunk based development"
       },
       {
         "text": "install-chromium.sh",

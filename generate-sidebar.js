@@ -9,33 +9,16 @@ const CONFIG_FILE = path.join(__dirname, 'config', '.vitepress', 'config.mts');
 // Ignore patterns
 const IGNORE_PATTERNS = ['.obsidian', '.gitignore', 'img'];
 
-// Category mapping and display names
-const CATEGORY_CONFIG = {
-  'Angular': { name: 'Angular', collapsed: true },
-  'React': { name: 'React', collapsed: true },
-  'Javascript': { name: 'Javascript', collapsed: true },
-  'CSharp': { name: 'CSharp', collapsed: true },
-  'Design patterns': { name: 'Design Patterns', collapsed: true },
-  'Algo': { name: 'Algo', collapsed: true },
-  'Docker': { name: 'Docker', collapsed: true },
-  'AWS': { name: 'AWS', collapsed: true },
-};
-
 const TOP_LEVEL_CATEGORIES = {
   'Angular': 'Frontend Development',
   'React': 'Frontend Development',
-  'VueJS': 'Frontend Development',
+  'Vue': 'Frontend Development',
   'Javascript': 'Programming Languages',
   'CSharp': 'Programming Languages',
   'Design patterns': 'Design & Architecture',
   'Algo': 'Algorithms & Data Structures',
   'Docker': 'Infrastructure & DevOps',
   'AWS': 'Infrastructure & DevOps',
-  'Common PR comments': 'References & Utilities',
-  'Git commands': 'References & Utilities',
-  'Random Interview questions': 'References & Utilities',
-  'Trunk based development': 'Design & Architecture',
-  'install-chromium.sh': 'References & Utilities',
 };
 
 function sanitizeLink(text) {
@@ -77,7 +60,7 @@ function buildSidebarItems(dir, baseLink = '') {
 
   // Add directory items (subdirectories)
   Object.entries(dir.dirs).forEach(([dirName, subDir]) => {
-    const config = CATEGORY_CONFIG[dirName] || { name: dirName, collapsed: false };
+    const config = { name: dirName, collapsed: true };
     const subItems = [];
     // Add markdown files from subdirectory
     subDir.files.forEach(file => {
